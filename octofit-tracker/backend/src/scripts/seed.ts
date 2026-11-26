@@ -29,6 +29,11 @@ export async function seed() {
       { $set: { name: 'Robocats', mascot: 'Hubot' } },
       { upsert: true, new: true, setDefaultsOnInsert: true },
     );
+    const codecats = await Team.findOneAndUpdate(
+      { name: 'Codecats' },
+      { $set: { name: 'Codecats', mascot: 'Copilot' } },
+      { upsert: true, new: true, setDefaultsOnInsert: true },
+    );
     const mona = await upsertDemoUser('Mona', 'mona@example.com', octocats._id, 'endurance');
     const hubot = await upsertDemoUser('Hubot', 'hubot@example.com', robocats._id, 'strength');
 
